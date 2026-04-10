@@ -11,18 +11,18 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
   :root {
+   --dark: #0b1220;
+    --dark-2: #111a2e;
     --blue: #3b9fe5;
-    --blue-dark: #2584c9;
-    --blue-light: #e8f4fc;
-    --hero-bg: #0b1220;
-    --hero-bg-2: #111a2e;
-    --text: #1e293b;
-    --text-mid: #475569;
-    --text-light: #64748b;
+    --blue-light: #5bb3ef;
+    --blue-soft: #e8f4fc;
+    --gold: #f5c518;
     --bg: #f7f9fc;
     --card: #ffffff;
+    --text: #1e293b;
+    --text-soft: #475569;
+    --text-light: #64748b;
     --border: #e5eaf2;
-    --gold: #f5c518;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -336,7 +336,7 @@
   }
   .tag {
     background: var(--blue-light);
-    color: var(--blue-dark);
+    color: var(--blue-);
     padding: 6px 14px;
     border-radius: 6px;
     font-size: 12.5px;
@@ -445,12 +445,7 @@
   }
 
   .project-kpis {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-    padding: 12px 0;
-    border-top: 1px dashed var(--border);
-    border-bottom: 1px dashed var(--border);
+    display:  none; 
   }
   .project-kpi {
     flex: 1;
