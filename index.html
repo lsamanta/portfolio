@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Samanta Lamour — Analyste Quantitatif Risque de Crédit</title>
+<meta name="description" content="Portfolio de Samanta Lamour — Analyste Quantitatif Risque de Crédit" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root {
+    --blue: #3b9fe5;
+    --blue-dark: #2584c9;
+    --blue-light: #e8f4fc;
+    --hero-bg: #0b1220;
+    --hero-bg-2: #111a2e;
+    --text: #1e293b;
+    --text-mid: #475569;
+    --text-light: #64748b;
+    --bg: #f7f9fc;
+    --card: #ffffff;
+    --border: #e5eaf2;
+    --gold: #f5c518;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+    overflow-x: hidden;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-2) 100%);
+    color: white;
+    padding: 70px 40px 90px;
+    position: relative;
+    overflow: hidden;
+    min-height: 440px;
+  }
+
+  #network-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid white;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    animation: fadeIn 0.8s ease;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-text {
+    animation: slideRight 0.8s ease;
+  }
+
+  .hero-text h1 {
+    font-size: 54px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .hero-text .tagline {
+    font-size: 16px;
+    color: #cbd5e1;
+    margin-bottom: 22px;
+    max-width: 560px;
+    line-height: 1.65;
+  }
+
+  .hero-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-bottom: 14px;
+    font-size: 14.5px;
+    color: #e2e8f0;
+  }
+  .hero-info span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-info i { color: var(--blue); font-size: 15px; }
+
+  .hero-social {
+    display: flex;
+    gap: 22px;
+    font-size: 14.5px;
+  }
+  .hero-social a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    transition: color 0.3s;
+  }
+  .hero-social a:hover { color: var(--blue); }
+  .hero-social i { font-size: 16px; }
+
+  /* ============ TABS NAVIGATION ============ */
+  .tabs-nav {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  }
+  .tabs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 40px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs-container::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 22px 28px;
+    font-family: inherit;
+    font-size: 15.5px;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+  .tab-btn i { font-size: 17px; }
+  .tab-btn:hover { color: var(--blue); }
+  .tab-btn.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+    font-weight: 600;
+  }
+
+  /* ============ SECTIONS ============ */
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 70px 40px;
+    display: none;
+    animation: fadeUp 0.5s ease;
+  }
+  .section.active { display: block; }
+
+  .section-title {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    padding-bottom: 14px;
+  }
+  .section-title i { color: var(--blue); font-size: 38px; }
+  .section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 70px;
+    height: 4px;
+    background: var(--blue);
+    border-radius: 2px;
+  }
+
+  /* ============ TIMELINE ============ */
+  .timeline {
+    position: relative;
+    padding-left: 10px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .timeline-item:last-child { margin-bottom: 0; }
+
+  .timeline-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--border);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    z-index: 2;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text);
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    position: relative;
+  }
+  .timeline-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--gold);
+    color: #333;
+    border-radius: 50px;
+    padding: 4px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    white-space: nowrap;
+  }
+  .timeline-badge i { font-size: 10px; }
+
+  .timeline-card {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .timeline-card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+
+  .timeline-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .timeline-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    align-items: center;
+  }
+  .timeline-company {
+    color: var(--blue);
+    font-weight: 600;
+  }
+  .timeline-location, .timeline-date {
+    color: var(--text-light);
+  }
+
+  .timeline-card ul {
+    list-style: none;
+    margin-top: 12px;
+  }
+  .timeline-card ul li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 9px;
+    color: var(--text-mid);
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+  .timeline-card ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 18px;
+    top: -2px;
+  }
+  .timeline-card ul li strong { color: var(--text); font-weight: 600; }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .tag {
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+
+  .ranking-badge {
+    display: inline-block;
+    background: var(--blue);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    margin-left: 10px;
+  }
+
+  .curriculum-label {
+    font-weight: 600;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .curriculum-cat { color: var(--blue); font-weight: 600; }
+
+  /* ============ PROJECTS ============ */
+  .projects-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  .filter-btn {
+    background: white;
+    border: 1.5px solid var(--border);
+    padding: 11px 22px;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-mid);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+  }
+  .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+  .filter-btn.active {
+    background: var(--blue);
+    color: white;
+    border-color: var(--blue);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+  }
+
+  .project-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px 28px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover {
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
+    border-color: var(--blue);
+  }
+
+  .project-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .project-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .project-card p {
+    color: var(--text-mid);
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin-bottom: 16px;
+    flex-grow: 1;
+  }
+
+  .project-kpis {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding: 12px 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+  }
+  .project-kpi {
+    flex: 1;
+  }
+  .project-kpi-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--blue);
+    line-height: 1;
+  }
+  .project-kpi-label {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .project-context {
+    font-size: 12.5px;
+    color: var(--text-light);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .project-context i { color: var(--blue); }
+
+  /* ============ SKILLS ============ */
+  .skills-subtitle {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text);
+  }
+  .skills-subtitle i { color: var(--blue); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .skill-card {
+    background: white;
+    border-radius: 12px;
+    padding: 26px 24px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .skill-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transform: translateY(-3px);
+  }
+
+  .skill-card h4 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+  }
+  .skill-card h4 i { color: var(--blue); font-size: 18px; }
+
+  .skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skill-chip {
+    background: #fff8e5;
+    color: #8b6914;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+    border: 1px solid #fef0c7;
+  }
+
+  .soft-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 18px;
+  }
+  .soft-skill {
+    background: white;
+    border-radius: 12px;
+    padding: 26px 18px;
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .soft-skill:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  }
+  .soft-skill i {
+    font-size: 28px;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .soft-skill div {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ============ FLOATING CV BUTTON ============ */
+  .cv-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    box-shadow: 0 8px 24px rgba(59, 159, 229, 0.45);
+    z-index: 200;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+  }
+  .cv-fab:hover {
+    background: var(--blue-dark);
+    transform: scale(1.1);
+    box-shadow: 0 12px 30px rgba(59, 159, 229, 0.6);
+  }
+  .cv-fab::after {
+    content: 'Télécharger le CV';
+    position: absolute;
+    right: 70px;
+    background: var(--text);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    font-family: 'Poppins', sans-serif;
+  }
+  .cv-fab:hover::after { opacity: 1; }
+
+  /* ============ ANIMATIONS ============ */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideRight {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .hero { padding: 50px 24px 60px; }
+    .hero-content { flex-direction: column; text-align: center; gap: 30px; }
+    .hero-photo { width: 160px; height: 160px; }
+    .hero-text h1 { font-size: 38px; }
+    .hero-info, .hero-social { justify-content: center; }
+    .tabs-container { padding: 0 20px; gap: 0; }
+    .tab-btn { padding: 18px 16px; font-size: 14px; }
+    .tab-btn span { display: none; }
+    .tab-btn i { font-size: 18px; }
+    .tab-btn.active span { display: inline; }
+    .section { padding: 50px 24px; }
+    .section-title { font-size: 30px; }
+    .section-title i { font-size: 28px; }
+    .timeline::before { left: 30px; }
+    .timeline-item { gap: 18px; }
+    .timeline-logo { width: 60px; height: 60px; font-size: 10px; padding: 6px; }
+    .timeline-card { padding: 22px 20px; }
+    .timeline-card h3 { font-size: 18px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .cv-fab { bottom: 20px; right: 20px; width: 52px; height: 52px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="network-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-photo">
+      <img src="samanta.jpeg" alt="Samanta Lamour" />
+    </div>
+    <div class="hero-text">
+      <h1>Samanta Lamour</h1>
+      <p class="tagline">
+        Analyste Quantitatif Risque de Crédit — spécialisée en modélisation PD, LGD, EAD sous IFRS9 et Bâle III. Actuellement en poste chez Bpifrance.
+      </p>
+      <div class="hero-info">
+        <span><i class="fas fa-envelope"></i> lamoursamanta.pro@gmail.com</span>
+        <span><i class="fas fa-phone"></i> +33 7 52 37 98 89</span>
+        <span><i class="fas fa-location-dot"></i> Île-de-France</span>
+      </div>
+      <div class="hero-social">
+        <a href="https://github.com/lsamanta" target="_blank"><i class="fab fa-github"></i> Github</a>
+        <a href="https://www.linkedin.com/in/samanta-lamour" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABS NAVIGATION -->
+<nav class="tabs-nav">
+  <div class="tabs-container">
+    <button class="tab-btn active" data-tab="experience">
+      <i class="fas fa-briefcase"></i><span>Expériences</span>
+    </button>
+    <button class="tab-btn" data-tab="education">
+      <i class="fas fa-graduation-cap"></i><span>Formation</span>
+    </button>
+    <button class="tab-btn" data-tab="projects">
+      <i class="fas fa-diagram-project"></i><span>Projets</span>
+    </button>
+    <button class="tab-btn" data-tab="skills">
+      <i class="fas fa-screwdriver-wrench"></i><span>Compétences</span>
+    </button>
+  </div>
+</nav>
+
+<!-- EXPERIENCE SECTION -->
+<section class="section active" id="experience">
+  <h2 class="section-title"><i class="fas fa-briefcase"></i>Expérience Professionnelle</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-logo">Bpifrance</div>
+      <div class="timeline-card">
+        <h3>Ingénieure Quantitative Risque de Crédit</h3>
+        <div class="timeline-meta">
+          <span class="timeline-company">Bpifrance</span>
+          <span class="timeline-location">Maisons-Alfort, France</span>
+          <span class="timeline-date">Oct. 2025 — Aujourd'hui</span>
+        </div>
+        <ul>
+          <li><strong>Modélisation IFRS9</strong> — développement, calibrage et documentation des modèles PD, LGD et EAD.</li>
+          <li>Construction et analyse des <strong>matrices de transition</strong>, intégration de scénarios macroéconomiques Forward Looking pour la projection du risque.</li>
+          <li>Contribution aux travaux sur les <strong>modèles de garantie</strong> pour les fonds de garantie, incluant des simulations de Monte Carlo pour estimer les pertes attendues et la sensibilité aux chocs macroéconomiques.</li>
+          <li>Automatisation des chaînes de calculs et mise en place de <strong>dashboards de suivi</strong> (monitoring, backtesting, stabilité des modèles).</li>
+          <li>Contribution à la production des <strong>provisions trimestrielles</strong> : intégration des scénarios Forward Looking, contrôle de cohérence sur les séries macroéconomiques et explication des variations des pertes attendues.</li>
+        </ul>
+        <div class="tag-list">
+          <span class="tag">Python</span>
+          <span class="tag">IFRS9</span>
+          <span class="tag">Monte Carlo</span>
+          <span class="tag">Forward Looking</span>
+          <span class="tag">Backtesting</span>
+          <span class="tag">Dashboards</span>
+          <span class="tag">SAS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-logo">Société<br>Générale</div>
+      <div class="timeline-card">
+        <h3>Analyste Quantitatif Risque de Crédit (Apprentissage)</h3>
+        <div class="timeline-meta">
+          <span class="timeline-company">Société Générale</span>
+          <span class="timeline-location">La Défense, France</span>
+          <span class="timeline-date">Sept. 2024 — Sept. 2025</span>
+        </div>
+        <ul>
+          <li>Développement de modèles alternatifs pour la <strong>PD Forward Looking</strong> sur le portefeuille Grande Clientèle : implémentation d'un <strong>Markov Switching Model</strong> pour capter les régimes macroéconomiques et construction d'un modèle structurel multifactoriel à la Merton.</li>
+          <li>Amélioration des processus IFRS9 : <strong>automatisation complète</strong> des calculs des paramètres PD, LGD, EAD et ECL via des pipelines Python, réduction significative des temps de calcul et fiabilisation des reportings internes.</li>
+          <li>Analyse de la performance des modèles : réalisation de backtests, études de stabilité, calcul des métriques de discrimination et calibration (<strong>AUC, KS, Brier Score</strong>), et participation à la préparation des éléments pour les comités de validation interne.</li>
+        </ul>
+        <div class="tag-list">
+          <span class="tag">Python</span>
+          <span class="tag">Markov Switching</span>
+          <span class="tag">Modèle de Merton</span>
+          <span class="tag">AUC / KS</span>
+          <span class="tag">Pipelines</span>
+          <span class="tag">Validation</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION SECTION -->
+<section class="section" id="education">
+  <h2 class="section-title"><i class="fas fa-graduation-cap"></i>Formation</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-logo">
+        <div class="timeline-badge"><i class="fas fa-trophy"></i> Top</div>
+        Paris 1<br>Sorbonne
+      </div>
+      <div class="timeline-card">
+        <h3>Master — Économétrie, Statistiques (MoSEF) <span class="ranking-badge">Data Science</span></h3>
+        <div class="timeline-meta">
+          <span class="timeline-company">Université Paris 1 Panthéon-Sorbonne — École d'Économie de la Sorbonne</span>
+          <span class="timeline-location">Paris, France</span>
+          <span class="timeline-date">2023 — 2025</span>
+        </div>
+        <div class="curriculum-label">Expertise acquise</div>
+        <ul>
+          <li><span class="curriculum-cat">Risque de crédit :</span> modélisation PD, LGD, EAD sous IFRS9 et Bâle III, scoring, backtesting et validation.</li>
+          <li><span class="curriculum-cat">Machine Learning & IA :</span> apprentissage statistique, Deep Learning, NLP, modèles Transformers (CamemBERT).</li>
+          <li><span class="curriculum-cat">Programmation :</span> Python, R, SAS, SQL, LaTeX, Git.</li>
+          <li><span class="curriculum-cat">Finance quantitative :</span> produits dérivés, économétrie financière, séries temporelles avancées.</li>
+          <li><span class="curriculum-cat">Réglementation prudentielle :</span> EBA, Bâle III/IV, IFRS9 — cadres applicables aux institutions financières.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-logo">
+        <div class="timeline-badge"><i class="fas fa-globe"></i> Erasmus</div>
+        Kent<br>UK
+      </div>
+      <div class="timeline-card">
+        <h3>Échange Erasmus — University of Kent</h3>
+        <div class="timeline-meta">
+          <span class="timeline-company">University of Kent</span>
+          <span class="timeline-location">Canterbury, Angleterre</span>
+          <span class="timeline-date">2022 — 2023</span>
+        </div>
+        <div class="curriculum-label">Semestre international</div>
+        <ul>
+          <li>Semestre d'échange au Royaume-Uni dans le cadre du programme Erasmus.</li>
+          <li>Perfectionnement de l'anglais académique et immersion dans un environnement universitaire britannique.</li>
+          <li>Cours en économie, statistiques et analyse de données dispensés intégralement en anglais.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-logo">UGA<br>Grenoble</div>
+      <div class="timeline-card">
+        <h3>Licence — Économie Appliquée et Analyse de Données</h3>
+        <div class="timeline-meta">
+          <span class="timeline-company">Université Grenoble Alpes</span>
+          <span class="timeline-location">Grenoble, France</span>
+          <span class="timeline-date">2020 — 2023</span>
+        </div>
+        <div class="curriculum-label">Programme</div>
+        <ul>
+          <li><span class="curriculum-cat">Économie :</span> microéconomie, macroéconomie, économie internationale.</li>
+          <li><span class="curriculum-cat">Statistiques appliquées :</span> probabilités, inférence statistique, économétrie.</li>
+          <li><span class="curriculum-cat">Analyse de données :</span> méthodes quantitatives, introduction à la programmation.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section class="section" id="projects">
+  <h2 class="section-title"><i class="fas fa-diagram-project"></i>Portfolio de Projets</h2>
+
+  <div class="projects-filters">
+    <button class="filter-btn active" data-filter="all"><i class="fas fa-th"></i> Tous</button>
+    <button class="filter-btn" data-filter="credit"><i class="fas fa-chart-line"></i> Risque de Crédit</button>
+    <button class="filter-btn" data-filter="ml"><i class="fas fa-brain"></i> Machine Learning</button>
+    <button class="filter-btn" data-filter="finance"><i class="fas fa-coins"></i> Finance Quantitative</button>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card" data-category="credit ml">
+      <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+      <h3>Credit Scoring — Prêts hypothécaires</h3>
+      <p>Modèle prédictif d'évaluation du risque de non-remboursement sur prêts hypothécaires (dataset HMEQ). Grille de score interprétable avec régression logistique et modèles ensemblistes (XGBoost, LightGBM, Random Forest). Analyse SHAP pour l'interprétabilité.</p>
+      <div class="project-kpis">
+        <div class="project-kpi">
+          <div class="project-kpi-value">0.88</div>
+          <div class="project-kpi-label">Gini XGBoost</div>
+        </div>
+        <div class="project-kpi">
+          <div class="project-kpi-value">5 960</div>
+          <div class="project-kpi-label">Observations</div>
+        </div>
+        <div class="project-kpi">
+          <div class="project-kpi-value">11</div>
+          <div class="project-kpi-label">Variables</div>
+        </div>
+      </div>
+      <div class="project-context"><i class="fas fa-university"></i> Paris 1 — MoSEF · 2024</div>
+      <div class="tag-list">
+        <span class="tag">Python</span>
+        <span class="tag">XGBoost</span>
+        <span class="tag">LightGBM</span>
+        <span class="tag">SHAP</span>
+        <span class="tag">Optuna</span>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="credit finance">
+      <div class="project-icon"><i class="fas fa-scale-balanced"></i></div>
+      <h3>Modélisation EAD — CCF Forward Looking IFRS9</h3>
+      <p>Modélisation de l'EAD pour le calcul des provisions IFRS9 sur prêts renouvelables. Construction d'un Credit Conversion Factor Forward Looking à partir de séries macroéconomiques, recalibrage de l'EAD à horizon 3 ans en intégrant le contexte économique.</p>
+      <div class="project-kpis">
+        <div class="project-kpi">
+          <div class="project-kpi-value">3 ans</div>
+          <div class="project-kpi-label">Horizon</div>
+        </div>
+        <div class="project-kpi">
+          <div class="project-kpi-value">CCF</div>
+          <div class="project-kpi-label">Forward Looking</div>
+        </div>
+        <div class="project-kpi">
+          <div class="project-kpi-value">IFRS9</div>
+          <div class="project-kpi-label">Cadre</div>
+        </div>
+      </div>
+      <div class="project-context"><i class="fas fa-university"></i> Paris 1 — MoSEF · 2024</div>
+      <div class="tag-list">
+        <span class="tag">Python</span>
+        <span class="tag">statsmodels</span>
+        <span class="tag">IFRS9</span>
+        <span class="tag">Macro</span>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="finance">
+      <div class="project-icon"><i class="fas fa-chart-area"></i></div>
+      <h3>Analyse comparative Value-at-Risk</h3>
+      <p>Étude comparative des méthodes d'estimation de la VaR journalière sur un portefeuille diversifié : VaR historique, EWMA, Monte Carlo et GARCH. Backtesting des modèles via tests de Kupiec et Christoffersen.</p>
+      <div class="project-kpis">
+        <div class="project-kpi">
+          <div class="project-kpi-value">4</div>
+          <div class="project-kpi-label">Méthodes VaR</div>
+        </div>
+        <div class="project-kpi">
+          <div class="project-kpi-value">GARCH</div>
+          <div class="project-kpi-label">Vol. cond.</div>
+        </div>
+        <div class="project-kpi">
+          <div class="project-kpi-value">SAS</div>
+          <div class="project-kpi-label">Langage</div>
+        </div>
+      </div>
+      <div class="project-context"><i class="fas fa-university"></i> Paris 1 — MoSEF · 2024</div>
+      <div class="tag-list">
+        <span class="tag">SAS</span>
+        <span class="tag">GARCH</span>
+        <span class="tag">EWMA</span>
+        <span class="tag">Monte Carlo</span>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="ml">
+      <div class="project-icon"><i class="fas fa-language"></i></div>
+      <h3>NLP Juridique — Challenge Predilex</h3>
+      <p>Extraction automatique d'informations (sexe de la victime, dates d'accident et de consolidation) à partir de 770 décisions juridiques en dommage corporel. Fine-tuning de CamemBERT et Legal CamemBERT + extension RAG avec GPT-3.5-turbo.</p>
+      <div class="project-kpis">
+        <div class="project-kpi">
+          <div class="project-kpi-value">93%</div>
+          <div class="project-kpi-label">Acc. dates</div>
+        </div>
+        <div class="project-kpi">
+          <div class="project-kpi-value">85.7%</div>
+          <div class="project-kpi-label">Acc. sexe</div>
+        </div>
+        <div class="project-kpi">
+          <div class="project-kpi-value">770</div>
+          <div class="project-kpi-label">Décisions</div>
+        </div>
+      </div>
+      <div class="project-context"><i class="fas fa-university"></i> Paris 1 — MoSEF · 2025</div>
+      <div class="tag-list">
+        <span class="tag">CamemBERT</span>
+        <span class="tag">HuggingFace</span>
+        <span class="tag">RAG</span>
+        <span class="tag">SpaCy</span>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="ml">
+      <div class="project-icon"><i class="fas fa-shield-halved"></i></div>
+      <h3>Détection de Malwares Windows</h3>
+      <p>Data Challenge ComCyber × Paris 1. Détection de 453 comportements malveillants sur 26 256 binaires Windows à partir de leurs Control Flow Graphs. Feature engineering avancé (100+ variables), XGBoost multi-label avec stratégie par fréquence et interprétabilité SHAP.</p>
+      <div class="project-kpis">
+        <div class="project-kpi">
+          <div class="project-kpi-value">26 256</div>
+          <div class="project-kpi-label">Binaires</div>
+        </div>
+        <div class="project-kpi">
+          <div class="project-kpi-value">453</div>
+          <div class="project-kpi-label">Classes</div>
+        </div>
+        <div class="project-kpi">
+          <div class="project-kpi-value">100+</div>
+          <div class="project-kpi-label">Features</div>
+        </div>
+      </div>
+      <div class="project-context"><i class="fas fa-university"></i> ComCyber-MI × Paris 1 · 2025</div>
+      <div class="tag-list">
+        <span class="tag">Python</span>
+        <span class="tag">XGBoost</span>
+        <span class="tag">SHAP</span>
+        <span class="tag">NetworkX</span>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="finance ml">
+      <div class="project-icon"><i class="fa-brands fa-bitcoin"></i></div>
+      <h3>Prévision de Volatilité — Cryptomonnaies</h3>
+      <p>Modélisation et prévision de la volatilité horaire de 5 cryptomonnaies (BTC, ETH, XRP, LTC, DOGE) sur 2020-2025. Comparaison GARCH(1,1), réseau NNAR et Filtre de Kalman robuste avec distribution Student-t pour les queues lourdes.</p>
+      <div class="project-kpis">
+        <div class="project-kpi">
+          <div class="project-kpi-value">5</div>
+          <div class="project-kpi-label">Cryptos</div>
+        </div>
+        <div class="project-kpi">
+          <div class="project-kpi-value">3</div>
+          <div class="project-kpi-label">Modèles</div>
+        </div>
+        <div class="project-kpi">
+          <div class="project-kpi-value">1h</div>
+          <div class="project-kpi-label">Granularité</div>
+        </div>
+      </div>
+      <div class="project-context"><i class="fas fa-university"></i> Paris 1 — MoSEF · 2025</div>
+      <div class="tag-list">
+        <span class="tag">Python</span>
+        <span class="tag">GARCH</span>
+        <span class="tag">Kalman</span>
+        <span class="tag">NNAR</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS SECTION -->
+<section class="section" id="skills">
+  <h2 class="section-title"><i class="fas fa-screwdriver-wrench"></i>Compétences</h2>
+
+  <h3 class="skills-subtitle"><i class="fas fa-code"></i> Compétences Techniques</h3>
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <h4><i class="fas fa-chart-line"></i> Risque de Crédit & Finance</h4>
+      <div class="skill-chips">
+        <span class="skill-chip">IFRS9</span>
+        <span class="skill-chip">Bâle III</span>
+        <span class="skill-chip">PD / LGD / EAD</span>
+        <span class="skill-chip">Scoring</span>
+        <span class="skill-chip">Backtesting</span>
+        <span class="skill-chip">Monte Carlo</span>
+        <span class="skill-chip">VaR</span>
+        <span class="skill-chip">Forward Looking</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h4><i class="fas fa-brain"></i> Machine Learning & IA</h4>
+      <div class="skill-chips">
+        <span class="skill-chip">Scikit-learn</span>
+        <span class="skill-chip">XGBoost</span>
+        <span class="skill-chip">LightGBM</span>
+        <span class="skill-chip">Random Forest</span>
+        <span class="skill-chip">PyTorch</span>
+        <span class="skill-chip">HuggingFace</span>
+        <span class="skill-chip">CamemBERT</span>
+        <span class="skill-chip">NLP / RAG</span>
+        <span class="skill-chip">SHAP</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h4><i class="fas fa-terminal"></i> Programmation</h4>
+      <div class="skill-chips">
+        <span class="skill-chip">Python</span>
+        <span class="skill-chip">R</span>
+        <span class="skill-chip">SAS</span>
+        <span class="skill-chip">SQL</span>
+        <span class="skill-chip">LaTeX</span>
+        <span class="skill-chip">Git</span>
+        <span class="skill-chip">Pandas</span>
+        <span class="skill-chip">NumPy</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h4><i class="fas fa-chart-area"></i> Statistiques & Économétrie</h4>
+      <div class="skill-chips">
+        <span class="skill-chip">Séries temporelles</span>
+        <span class="skill-chip">GARCH</span>
+        <span class="skill-chip">Markov Switching</span>
+        <span class="skill-chip">Kalman</span>
+        <span class="skill-chip">Économétrie avancée</span>
+        <span class="skill-chip">Modélisation prédictive</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h4><i class="fas fa-chart-pie"></i> Visualisation & Reporting</h4>
+      <div class="skill-chips">
+        <span class="skill-chip">Matplotlib</span>
+        <span class="skill-chip">Seaborn</span>
+        <span class="skill-chip">Plotly</span>
+        <span class="skill-chip">Power BI</span>
+        <span class="skill-chip">Excel avancé</span>
+        <span class="skill-chip">Dashboards</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h4><i class="fas fa-language"></i> Langues</h4>
+      <div class="skill-chips">
+        <span class="skill-chip">Français (natif)</span>
+        <span class="skill-chip">Anglais C1 (TOEIC)</span>
+        <span class="skill-chip">Espagnol A2</span>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 class="skills-subtitle"><i class="fas fa-lightbulb"></i> Soft Skills</h3>
+  <div class="soft-skills-grid">
+    <div class="soft-skill"><i class="fas fa-brain"></i><div>Esprit analytique</div></div>
+    <div class="soft-skill"><i class="fas fa-arrows-rotate"></i><div>Adaptabilité</div></div>
+    <div class="soft-skill"><i class="fas fa-users"></i><div>Travail d'équipe</div></div>
+    <div class="soft-skill"><i class="fas fa-magnifying-glass"></i><div>Curiosité</div></div>
+    <div class="soft-skill"><i class="fas fa-clock"></i><div>Rigueur</div></div>
+    <div class="soft-skill"><i class="fas fa-list-check"></i><div>Organisation</div></div>
+    <div class="soft-skill"><i class="fas fa-diagram-project"></i><div>Gestion de projet</div></div>
+    <div class="soft-skill"><i class="fas fa-comments"></i><div>Communication</div></div>
+  </div>
+</section>
+
+<!-- FLOATING CV BUTTON -->
+<a href="CV_Samanta_Lamour.pdf" download class="cv-fab">
+  <i class="fas fa-download"></i>
+</a>
+
+<script>
+  // ========== TABS NAVIGATION ==========
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const sections = document.querySelectorAll('.section');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      tabBtns.forEach(b => b.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(target).classList.add('active');
+      window.scrollTo({ top: document.querySelector('.tabs-nav').offsetTop, behavior: 'smooth' });
+    });
+  });
+
+  // ========== PROJECT FILTERS ==========
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      projectCards.forEach(card => {
+        if (filter === 'all' || card.dataset.category.includes(filter)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // ========== ANIMATED NETWORK BACKGROUND ==========
+  const canvas = document.getElementById('network-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let width, height;
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    width = canvas.width = rect.width;
+    height = canvas.height = rect.height;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.radius = Math.random() * 1.8 + 0.8;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > width) this.vx *= -1;
+      if (this.y < 0 || this.y > height) this.vy *= -1;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(59, 159, 229, 0.6)';
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    const count = Math.floor((width * height) / 12000);
+    for (let i = 0; i < count; i++) particles.push(new Particle());
+  }
+  initParticles();
+  window.addEventListener('resize', initParticles);
+
+  function drawLines() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 140) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(59, 159, 229, ${0.25 * (1 - dist / 140)})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    drawLines();
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
+
+</body>
+</html>
